@@ -1,8 +1,11 @@
 <?php
+
 require __DIR__ . '/../../fullstackphp/fsphp.php';
-fullStackPHPClassName("CLASS_TITLE");
+fullStackPHPClassName("02.02 - Definindo ambiente");
 
 /*
- * 
+ * Documentando o Exemplo do código.
  */
-fullStackPHPClassSession("", __LINE__);
+fullStackPHPClassSession("Debug Section", __LINE__);
+
+var_dump($_SERVER);

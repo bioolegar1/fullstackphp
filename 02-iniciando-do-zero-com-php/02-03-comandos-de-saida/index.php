@@ -90,4 +90,9 @@ echo vsprintf($company, $array);
  */
 fullStackPHPClassSession("var_dump", __LINE__);
 
-var_dump($array);
+var_dump(
+    $array,
+    $hello,
+    $company
+);
+
