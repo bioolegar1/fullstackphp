@@ -1,93 +1,104 @@
 <?php
 require __DIR__ . '/../../fullstackphp/fsphp.php';
-fullStackPHPClassName("02.03 - Comandos de saída");
+fullStackPHPClassName("02.04 - Variáveis e tipos de dados");
 
 /**
- * [ echo ] https://php.net/manual/pt_BR/function.echo.php
+ * [tipos de dados] https://php.net/manual/pt_BR/language.types.php
+ * [ variáveis ] https://php.net/manual/pt_BR/language.variables.php
  */
-fullStackPHPClassSession("echo", __LINE__);
+fullStackPHPClassSession("variáveis", __LINE__);
 
-echo " <p> Olá Mundo! " , " ", "<span class='tag'>#BoraProgramar!</span>" , " </p>";
+echo "<strong>camelCase</strong>";
 
-$hello = "Olá Mundo!";
-$code = "<span class='tag'>#BoraProgramar!</span>";
+$userFirstName = "Bio";
+$userLastName = "Olegari";
+echo "<h3> {$userFirstName} {$userLastName} </h3>";
 
-echo "<p>$hello</p>";
-echo '<p>$hello</p>';
 
-$day = "dia";
-echo "<p> Falta 1 $day para o evento! </p>";
-echo "<p> Falta 2 {$day}s para o evento! </p>";
+echo "<strong>snake_case</strong>";
 
-echo "<h3>{$hello}</h3>";
-echo "<h4>{$hello} {$code}</h4>";
+$user_fist_name = $userFirstName;
+$user_last_name = $userLastName;
+echo "<h3> {$user_fist_name} {$userLastName} </h3>";
 
-echo '<h3>' . $hello . " " . $code . '</h3>';
-?>
+$userAge = "35";
+echo "<p> {$userFirstName} {$userLastName} <span class='tag'>tem {$userAge} anos.</span></p>";
 
-    <H4> <?= $hello ?> <?= $code ?> </h4>
+$userEmail = "<p> bioolegari@gmail.com </p>";
+echo $userEmail;
 
-<?php
+//Variável variável
+$company = "Olegari";
+$$company = "FullStack";
+echo "<h3> {$company} {$Olegari}</h3>";
 
+$calcA = 10;
+$calcB = 20;
+//$calcB = $calcA;
+$calcB = &$calcA;
+$calcB = 20;
+var_dump([
+    "a" => $calcA,
+    "b" => $calcB
+]);
 
 /**
- * [ print ] https://php.net/manual/pt_BR/function.print.php
+ * [ tipo boleano ] true | false
  */
-fullStackPHPClassSession("print", __LINE__);
+fullStackPHPClassSession("tipo boleano", __LINE__);
 
-//print $hello, $code;
-print $hello;
-print $code;
+$true = true;
+$false = false;
+var_dump($true,$false);
 
-print "<h3>{$hello} {$code}</h3>";
+$bestAge = ($userAge > 50);
+var_dump($bestAge);
 
+//varaveis zeradas ou impositivas ou vazias são reconhecidas como false.
+$a = 0;
+$b = 0.0;
+$c = "";
+$d = []; //ou $d = array() ;
+$e = null;
+var_dump($a, $b, $c, $d, $e);
 
-/**
- * [ print_r ] https://php.net/manual/pt_BR/function.print-r.php
- */
-fullStackPHPClassSession("print_r", __LINE__);
-
-$array = [
-"company" => "BioOlegari",
-    "course" => "PHPFullStack",
-    "class" => "Comandos de Saída"
-];
-
-//print $array;
-print_r($array);
-echo"<pre>", print_r($array, true), "</pre>";
-
-
-/**
- * [ printf ] https://php.net/manual/pt_BR/function.printf.php
- */
-fullStackPHPClassSession("printf", __LINE__);
-
-$article = "<article><h1>%s<p>%s</p></h1></article>";
-$title = "{$hello} {$code}";
-$subtitle   ="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-    typesetting,remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-    sheets containing.Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-    including versions of Lorem Ipsum.";
-
-printf($article, $title, $subtitle);
-echo sprintf($article, $title, $subtitle);
+if($a || $b || $c || $d || $e) {
+    var_dump(true);
+}else {
+    var_dump(false);
+}
 
 
 /**
- * [ vprintf ] https://php.net/manual/pt_BR/function.vprintf.php
+ * [ tipo callback ] call | closure
  */
-fullStackPHPClassSession("vprintf", __LINE__);
+fullStackPHPClassSession("tipo callback", __LINE__);
 
-$company = "<article><h1>Escola %s<p>Curso<b>, aula <b>%s</p></h1></article>";
-vprintf($company, $array);
-echo vsprintf($company, $array);
+$code = "<article><h1>Um Call User Function!</h1></article> ";
+$codeClear = call_user_func("strip_tags",$code);
+var_dump($code, $codeClear);
+
+//funções anonimas:
+$codeMore = function ($code){
+  var_dump($code);
+};
+$codeMore("#BoraProgramar!");
+
 
 /**
- * [ var_dump ] https://php.net/manual/pt_BR/function.var-dump.php
+ * [ outros tipos ] string | array | objeto | numérico | null
  */
-fullStackPHPClassSession("var_dump", __LINE__);
-
-var_dump($array);
+fullStackPHPClassSession("outros tipos", __LINE__);
+$string = "Olá Mundo";
+$array = [$string];
+$object = new StdClass();
+$null = null;
+$int = 12132;
+$float = 1.2312;
+var_dump([
+  $array,
+  $object,
+  $null,
+  $int,
+  $float]
+);
