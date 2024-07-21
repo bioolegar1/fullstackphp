@@ -90,7 +90,3 @@ var_dump("Pagamento Aprovado");
         var_dump("Erro ao processar pagamento!");
         break;
 };
-
-
-
-
